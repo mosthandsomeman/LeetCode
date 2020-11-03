@@ -1,7 +1,4 @@
-#include<string>
-#include<cstdio>
-#include<algorithm>
-#include<iostream>
+#include"bits/stdc++.h"
 using namespace std;
 class Solution {
 public:

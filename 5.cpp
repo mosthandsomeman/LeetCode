@@ -1,6 +1,4 @@
-#include<string>
-#include<cstdio>
-#include<iostream> 
+#include"bits/stdc++.h"
 int dp[1001][1001];
 using namespace std;
 class Solution {

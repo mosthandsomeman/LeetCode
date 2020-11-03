@@ -1,35 +1,30 @@
-#include<vector>
-#include<string>
-#include<map>
-#include<set>
+#include"bits/stdc++.h"
 using namespace std;
 class Solution {
 public:
-    bool wordBreak(string s, vector<string>& wordDict) {
-        map<char, set<string> > idx;
-        for(char a = 'a';a<='z';++a){
-            set<string> sset;
-            idx[a] = sset;
-        }
-        for(int i=0;i<wordDict.size();++i){
-            idx[wordDict[i][0]].insert(wordDict[i]);
-        }
-        string k = "";
-        int i =0;
-        while(i<s.size()&& k!= s){
-            string word = "";
-            int tag = 0;
-            for(int j = 1;j<= s.size() - i;++j){
-                string tmp = s.substr(i, j);
-                if(idx[s[i]].find(tmp) != idx[s[i]].end()){
-                    tag = 1;
-                    word = tag;
-                }
-                else break;
-            }
-            if(tag) k+=word;
-            else return false;
-        }
-        return true;
-    }
+	bool res;
+	void dfs(string s, string word, int idx, set<string> dict) {
+		word.insert(word.size(), 1, s[idx]);
+		if (idx == s.size() - 1) {
+			if (dict.find(word) != dict.end()) {
+				res = true;
+                return;
+			}
+			word.pop_back();
+			return;
+		}
+		if (dict.find(word) != dict.end()) {
+			string w1 = "";
+			dfs(s, w1, idx + 1, dict);
+		}
+		dfs(s, word, idx + 1, dict);
+		word.pop_back();
+	}
+	bool wordBreak(string s, vector<string>& wordDict) {
+		set<string> dict(wordDict.begin(), wordDict.end());
+        res = false;
+		string tmp = "", word = "";
+		dfs(s, word, 0, dict);
+		return res;
+	}
 };

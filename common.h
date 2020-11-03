@@ -27,7 +27,7 @@ public:
     ~createTree();
 
 public:
-    //用vec创建树
+    //用vec创建树   vec补充为满二叉树 NULL 用-1 代替
     TreeNode * createTreeByVec(vector<int> vec);
     
     //根据先序中序创建树
