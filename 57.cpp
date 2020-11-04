@@ -71,6 +71,7 @@ public:
 				}
 			}
 		}
+        if(!tag) res.push_back(newInterval);
 		return res;
 	}
 };
