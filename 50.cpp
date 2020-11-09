@@ -1,4 +1,4 @@
-#include"bits/stdc++.h"
+#include<bits/stdc++.h>
 class Solution {
 public:
     double func(double x, long long n){
